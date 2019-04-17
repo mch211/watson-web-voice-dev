@@ -2,13 +2,13 @@
 declared-services:
   wvb-conversation-service:
     label: conversation
-    plan: free
+    plan: standard
   wvb-texttospeech-service:
     label: text_to_speech
-    plan: lite
+    plan: standard
   wvb-speechtotext-service:
     label: speech_to_text
-    plan: lite
+    plan: standard
 
 applications:
 - path: .
