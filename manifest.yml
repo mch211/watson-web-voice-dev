@@ -14,8 +14,8 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-voice-demo-fix
-  host: watson-web-voice-demo-fix
+  name: watson-web-voice-dev
+  host: watson-web-voice-dev
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
