@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-web-service-dev:
+  wvb-assistant-service-dev:
     label: conversation
     plan: standard
-  wvb-tts-web-service-dev:
+  wvb-tts-service-dev:
     label: text_to_speech
     plan: standard
-  wvb-stt-web-service-dev:
+  wvb-stt-service-dev:
     label: speech_to_text
     plan: standard
 
@@ -14,15 +14,15 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-voice-dev
-  host: watson-web-voice-dev
+  name: watson-web-vb-dev
+  host: watson-web-vb-dev
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-web-service-dev
-  - wvb-tts-web-service-dev
-  - wvb-stt-web-service-dev
+  - wvb-assistant-service-dev
+  - wvb-tts-service-dev
+  - wvb-stt-service-dev
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
