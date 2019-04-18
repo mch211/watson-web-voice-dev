@@ -20,9 +20,9 @@ applications:
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-web-service-fix
-  - wvb-tts-web-service-fix
-  - wvb-stt-web-service-fix
+  - wvb-assistant-web-service-dev
+  - wvb-tts-web-service-dev
+  - wvb-stt-web-service-dev
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
