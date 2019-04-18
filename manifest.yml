@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-web-service-fix:
+  wvb-assistant-web-service-dev:
     label: conversation
     plan: standard
-  wvb-tts-web-service-fix:
+  wvb-tts-web-service-dev:
     label: text_to_speech
     plan: standard
-  wvb-stt-web-service-fix:
+  wvb-stt-web-service-dev:
     label: speech_to_text
     plan: standard
 
