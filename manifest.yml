@@ -21,8 +21,8 @@ applications:
   random-route: false
   services:
   - wvb-assistant-dev-text
-  - wvb-tts-dev-text
-  - wvb-stt-dev-text
+  - wvb-tts-dev-text-text
+  - wvb-stt-dev-text-text
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
