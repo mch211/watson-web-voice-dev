@@ -99,15 +99,21 @@ def getConvResponse():
         assistant = AssistantV1(**assistant_kwargs)
 
         convText = request.form.get('convText')
+        typeText = request.form.get('typebox')
         convContext = request.form.get('context')
 
         if convContext is None:
             convContext = "{}"
         jsonContext = json.loads(convContext)
 
-        response = assistant.message(workspace_id=workspace_id,
-                                     input={'text': convText},
-                                     context=jsonContext)
+        if convText:
+            response = assistant.message(workspace_id=workspace_id,
+                                         input={'text': convText},
+                                         context=jsonContext)
+        if typeText:
+            response = assistant.message(workspace_id=workspace_id,
+                                             input={'text': typeText},
+                                             context=jsonContext)
     except Exception as e:
         print(e)
 
