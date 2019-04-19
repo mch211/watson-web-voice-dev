@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-dev:
+  wvb-assistant-dev-text:
     label: conversation
     plan: standard
-  wvb-tts-dev:
+  wvb-tts-dev-text:
     label: text_to_speech
     plan: standard
-  wvb-stt-dev:
+  wvb-stt-dev-text:
     label: speech_to_text
     plan: standard
 
@@ -20,9 +20,9 @@ applications:
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-dev
-  - wvb-tts-dev
-  - wvb-stt-dev
+  - wvb-assistant-dev-text
+  - wvb-tts-dev-text
+  - wvb-stt-dev-text
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
