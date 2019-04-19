@@ -14,8 +14,8 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-vbdev
-  host: watson-web-vbdev
+  name: watson-web-vbdev-text
+  host: watson-web-vbdev-text
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
