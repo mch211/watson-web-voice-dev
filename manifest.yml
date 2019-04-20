@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-devtxt:
+  wvb-assistant-devtxtGET:
     label: conversation
     plan: standard
-  wvb-tts-devtxt:
+  wvb-tts-devtxtGET:
     label: text_to_speech
     plan: standard
-  wvb-stt-devtxt:
+  wvb-stt-devtxtGET:
     label: speech_to_text
     plan: standard
 
@@ -14,15 +14,15 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-vbdevtxt
-  host: watson-web-vbdevtxt
+  name: watson-web-vbdevtxtGET
+  host: watson-web-vbdevtxtGET
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-devtxt
-  - wvb-tts-devtxt
-  - wvb-stt-devtxt
+  - wvb-assistant-devtxtGET
+  - wvb-tts-devtxtGET
+  - wvb-stt-devtxtGET
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
