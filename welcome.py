@@ -124,6 +124,39 @@ def getConvResponse():
     return jsonify(results=responseDetails)
 
 
+@app.route('/send_message/<message>')
+def send_mesage(message):
+    try:
+        assistant_kwargs = {
+            'version': '2018-09-20',
+            'username': assistantUsername,
+            'password': assistantPassword,
+            'iam_apikey': assistantIAMKey,
+            'url': assistantUrl
+        }
+
+        assistant = AssistantV1(**assistant_kwargs)    
+
+        global context_val
+        response = assistant.message(
+        workspace_id=workspace_id,
+        input={
+            'text': str(message)
+        },
+        context=context_val
+        )
+
+        print(context_val.keys())
+        
+    except Exception as e:
+    print(e)    
+        
+    response = response.get_result()
+    reponseText = response["output"]["text"]
+    responseDetails = {'responseText': reponseText[0],
+                       'context': response["context"]}
+    return jsonify(results=responseDetails)
+
 @app.route('/api/text-to-speech', methods=['POST'])
 def getSpeechFromText():
     tts_kwargs = {
