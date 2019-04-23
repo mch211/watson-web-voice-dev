@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-devtxt-alt-2:
+  wvb-assistant-textpost:
     label: conversation
     plan: standard
-  wvb-tts-devtxt-alt-2:
+  wvb-tts-textpost:
     label: text_to_speech
     plan: standard
-  wvb-stt-devtxt-alt-2:
+  wvb-stt-textpost:
     label: speech_to_text
     plan: standard
 
@@ -14,15 +14,15 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-vbdevtxt-alt-2
-  host: watson-web-vbdevtxt-alt-2
+  name: watson-web-vbtextpost
+  host: watson-web-vbtextpost
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-devtxt-alt-2
-  - wvb-tts-devtxt-alt-2
-  - wvb-stt-devtxt-alt-2
+  - wvb-assistant-textpost
+  - wvb-tts-textpost
+  - wvb-stt-textpost
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
