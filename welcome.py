@@ -149,7 +149,7 @@ def send_mesage(message):
         print(context_val.keys())
         
     except Exception as e:
-    print(e)    
+        print(e)    
         
     response = response.get_result()
     reponseText = response["output"]["text"]
