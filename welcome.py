@@ -112,7 +112,7 @@ def getConvResponse():
                                          context=jsonContext)
         if typeText:
             response = assistant.message(workspace_id=workspace_id,
-                                             input={'text': str(typeText)},
+                                             input={'text': typeText},
                                              context=jsonContext)
     except Exception as e:
         print(e)
