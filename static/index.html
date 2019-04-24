@@ -48,7 +48,8 @@
               <div id="p2" class="mdl-cell mdl-cell--12-col mdl-cell-8-col-tablet mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
             </div>
               <div  id="belowtext">
-                <img id="stt2" style="float:right;margin-top:-52px;pointer-events:all" src="./static/img/mic.gif" />
+                <ul id="recordingslist"></ul>
+                  <img id="stt2" style="float:right;margin-top:-52px;pointer-events:all" src="./static/img/mic.gif" />
                 <style>
                     textarea {
                     width: 100%;
@@ -62,10 +63,10 @@
                     resize: none;
                     }
                   </style>
-                  <form action= "/api/conversation" form method="POST">
+                  <!-- <form action= "/api/conversation" form method="POST"> -->
                     <textarea name="textbox"></textarea>
-                    <button type="submit" name="submit">Submit</button>
-                  </form>
+                    <button type="submit" name="submit" onclick=callConversationtxt()>Submit</button>
+                  <!-- </form> -->
               </div>
           </div>
         </div>
