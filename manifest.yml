@@ -1,12 +1,12 @@
 ---
 declared-services:
-  wvb-assistant-textpostFORM:
+  wvb-assistant-talktalk:
     label: conversation
     plan: standard
-  wvb-tts-textpostFORM:
+  wvb-tts-talktalk:
     label: text_to_speech
     plan: standard
-  wvb-stt-textpostFORM:
+  wvb-stt-talktalk:
     label: speech_to_text
     plan: standard
 
@@ -14,15 +14,15 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  name: watson-web-vbtextpostFORM
-  host: watson-web-vbtextpostFORM
+  name: watson-web-talktalk
+  host: watson-web-talktalk
   disk_quota: 1024M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-assistant-textpostFORM
-  - wvb-tts-textpostFORM
-  - wvb-stt-textpostFORM
+  - wvb-assistant-talktalk
+  - wvb-tts-talktalk
+  - wvb-stt-talktalk
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
