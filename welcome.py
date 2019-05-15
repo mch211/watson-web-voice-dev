@@ -83,6 +83,43 @@ def Welcome():
     return app.send_static_file('index.html')
 
 
+@app.route('/api/conversationtxt', methods=['POST', 'GET'])
+def getConvResponsetxt():
+    # Instantiate Watson Assistant client.
+    # only give a url if we have one (don't override the default)
+    try:
+        assistant_kwargs = {
+            'version': '2018-09-20',
+            'username': assistantUsername,
+            'password': assistantPassword,
+            'iam_apikey': assistantIAMKey,
+            'url': assistantUrl
+        }
+
+        assistant = AssistantV1(**assistant_kwargs)
+
+
+        typeText = request.form.get('textType')
+        typeText = str(typeText)
+        convContext = request.form.get('context')
+
+        if convContext is None:
+            convContext = "{}"
+        jsonContext = json.loads(convContext)
+
+
+        response = assistant.message(workspace_id=workspace_id,
+                                             input={'text': typeText},
+                                             context=jsonContext)
+        response = response.get_result()
+        reponseText = response["output"]["text"]
+        responseDetails = {'responseText': reponseText[0],
+                               'context': response["context"]}
+        return jsonify(results=responseDetails)
+
+    except Exception as e:
+        print(e)
+
 @app.route('/api/conversation', methods=['POST', 'GET'])
 def getConvResponse():
     # Instantiate Watson Assistant client.
@@ -99,30 +136,25 @@ def getConvResponse():
         assistant = AssistantV1(**assistant_kwargs)
 
         convText = request.form.get('convText')
-        typeText = request.form.get('textbox')
+
         convContext = request.form.get('context')
 
         if convContext is None:
             convContext = "{}"
         jsonContext = json.loads(convContext)
 
-        if convText:
-            response = assistant.message(workspace_id=workspace_id,
-                                         input={'text': convText},
-                                         context=jsonContext)
-        if typeText:
-            response = assistant.message(workspace_id=workspace_id,
-                                             input={'text': typeText},
+
+        response = assistant.message(workspace_id=workspace_id,
+                                             input={'text': convText},
                                              context=jsonContext)
+        response = response.get_result()
+        reponseText = response["output"]["text"]
+        responseDetails = {'responseText': reponseText[0],
+                               'context': response["context"]}
+        return jsonify(results=responseDetails)
+
     except Exception as e:
         print(e)
-
-    response = response.get_result()
-    reponseText = response["output"]["text"]
-    responseDetails = {'responseText': reponseText[0],
-                       'context': response["context"]}
-    return jsonify(results=responseDetails)
-
 
 
 @app.route('/api/text-to-speech', methods=['POST'])
@@ -175,4 +207,3 @@ def getTextFromSpeech():
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
     socketio.run(app, host='0.0.0.0', port=int(port))
-
