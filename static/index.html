@@ -50,29 +50,18 @@
               <div  id="belowtext">
                 <ul id="recordingslist"></ul>
                   <img id="stt2" style="float:right;margin-top:-52px;pointer-events:all" src="./static/img/mic.gif" />
-                <style>
-                    textarea {
-                    width: 100%;
-                    height: 10px;
-                    padding: 12px 20px;
-                    box-sizing: border-box;
-                    border: 2px solid #ccc;
-                    border-radius: 4px;
-                    background-color: #f8f8f8;
-                    font-size: 16px;
-                    resize: none;
-                    }
-                  </style>
-                  <!-- <form action= "/api/conversation" form method="POST"> -->
-                    <textarea name="textbox"></textarea>
-                    <button type="submit" name="submit" onclick=callConversationtxt()>Submit</button>
-                  <!-- </form> -->
+                  <form name ="inputform" id="form_input" action="#">
+
+                  Input: <input type="text" name="inputfield" id="field_input" />
+
+                  <input type="button" name="submit" value="Submit"
+                  onclick="callConversationtxt();" />
+
+                  </form>
               </div>
           </div>
         </div>
       </div>
-
-</div>
     </main>
   </div>
   <p><audio id="audio" controls></audio></p>
