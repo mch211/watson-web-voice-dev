@@ -37,7 +37,6 @@ $(document).ready(function() {
   $.ajax({
     url: '/api/conversation',
     convText: '',
-    typeText: '',
     context: ''
   })
     .done(function(res) {
@@ -52,28 +51,6 @@ $(document).ready(function() {
       console.log(error);
     });
 });
-
-function callConversationtxt(input) {
-  console.log("Entered callConversation - Text");
-  var input_element = document.getElementById('field_input')
-  var inputtxt = input_element.value
-  var toggle = "On"
-  displayMsgDiv(inputtxt, 'user')
-
-  $.post('/api/conversationtxt', {
-    textType: inputtxt,
-    context: JSON.stringify(conversationContext)
-  })
-    .done(function(res, status) {
-      conversationContext = res.results.context;
-      play(res.results.responseText);
-      displayMsgDiv(res.results.responseText, 'bot');
-      console.log("Done");
-    })
-    .fail(function(jqXHR, e) {
-      console.log('Error: ' + jqXHR.responseText);
-    });
-}
 
 function callConversation(res) {
   $('#q').attr('disabled', 'disabled');
@@ -180,7 +157,7 @@ function stopRecording(button) {
 
       // Decode asynchronously
       request.onload = function() {
-        displayMsgDiv(request.response, 'user');
+        displayMsgDiv(request.response, 'bot');
         callConversation(request.response);
       };
       request.send(blob);
